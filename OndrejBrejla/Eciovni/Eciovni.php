@@ -2,7 +2,6 @@
 
 namespace OndrejBrejla\Eciovni;
 
-use Mpdf\Mpdf;
 use Nette\Application\LinkGenerator;
 use Nette\Application\UI\ITemplate;
 use Nette\Application\UI\ITemplateFactory;
@@ -51,24 +50,24 @@ class Eciovni {
   }
 
   /**
-   * Exports Invoice template via passed mPDF.
+   * Exports Invoice template via passed Mpdf.
    *
-   * @param mPDF $mpdf
+   * @param Mpdf $mpdf
    * @param string $name
    * @param string $dest
    * @return string|NULL
    */
-  public function exportToPdf(\mPDF $mpdf, $name = NULL, $dest = NULL) {
+  public function exportToPdf(\Mpdf\Mpdf $mpdf, $name = NULL, $dest = NULL) {
     $this->generate($this->template);
-    $mpdf->WriteHTML((string) $this->template);
+    $mpdf->writeHTML((string) $this->template);
 
     $result = NULL;
     if (($name !== '') && ($dest !== NULL)) {
-      $result = $mpdf->Output($name, $dest);
+      $result = $mpdf->output($name, $dest);
     } elseif ($dest !== NULL) {
-      $result = $mpdf->Output('', $dest);
+      $result = $mpdf->output('', $dest);
     } else {
-      $result = $mpdf->Output($name, $dest);
+      $result = $mpdf->output($name, $dest);
     }
     return $result;
   }

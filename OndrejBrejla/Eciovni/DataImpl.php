@@ -223,61 +223,63 @@ class DataImpl implements Data {
   /**
    * Returns the bank account
    * 
-   * @return string
+   * @return string|null
    */
-  public function getBankAccount(): string {
+  public function getBankAccount() {
     return $this->bankAccount;
   }
 
   /**
    * Returns the bank IBAN
    * 
-   * @return string
+   * @return string|null
    */
-  public function getBankIban(): string {
+  public function getBankIban() {
     return $this->bankIban;
   }
 
   /**
    * Return the bank name
    * 
-   * @return string
+   * @return string|null
    */
-  public function getBankName(): string {
+  public function getBankName() {
     return $this->bankName;
   }
 
   /**
    * Returns the bank SWIFT
    * 
-   * @return string
+   * @return string|null
    */
-  public function getBankSwift(): string {
+  public function getBankSwift() {
     return $this->bankSwift;
   }
 
   /**
    * Returns the payment method
    * 
-   * @return string
+   * @return string|null
    */
-  public function getPaymentMethod(): string {
+  public function getPaymentMethod() {
     return $this->paymentMethod;
   }
 
   /**
    * Return the supplier text
    * 
-   * @return string
+   * @return string|null
    */
-  public function getSupplierText(): string {
+  public function getSupplierText() {
     return $this->supplierText;
   }
 
   /**
-   * Return the supplier logo image 
+   * Return the supplier logo image
+   *
+   * @return string|null
    */
-  public function getSupplierLogoImgSrc(): string {
+  public function getSupplierLogoImgSrc() {
     return $this->supplierLogoImgSrc;
   }
 
