@@ -19,6 +19,13 @@ interface Item {
     public function getDescription();
 
     /**
+     * Returns the size of the item.
+     *
+     * @return string
+     */
+    public function getSize();
+
+    /**
      * Returns the tax of the item.
      *
      * @return double

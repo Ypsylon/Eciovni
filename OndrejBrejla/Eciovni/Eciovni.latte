@@ -60,7 +60,8 @@
     }
 </style>
 <div>
-    <div style="text-align: right; border-bottom: 2px solid #000000; color: #1A5DAC; font-weight: bold; font-size: 20px;">{$title} - {$id}</div>
+    <div style="text-align: right; border-bottom: 2px solid #000000; color: #1A5DAC; font-weight: bold; font-size: 20px;">{$title}
+        - {$id}</div>
 
     <table>
         <tr>
@@ -92,7 +93,8 @@
                 <table style="width: 100%; margin-bottom: 15px;" n:if="$supplierAccountNumber">
                     <tr>
                         <td>Číslo účtu:</td>
-                        <td style="text-align: center; border: 3px solid #000000; font-weight: bold" width="220">{$supplierAccountNumber}</td>
+                        <td style="text-align: center; border: 3px solid #000000; font-weight: bold"
+                            width="220">{$supplierAccountNumber}</td>
                     </tr>
                 </table>
 
@@ -178,14 +180,15 @@
                 <td style="text-align: right;"><strong>Cena (Kč)</strong></td>
             </tr>
             {foreach $items as $item}
-            <tr>
-                <td>{$item->getDescription()}</td>
-                <td style="text-align: right;">{$item->countUntaxedUnitValue()|round}</td>
-                <td style="text-align: right;">{$item->getUnits()|round}</td>
-                <td style="text-align: right;">{$item->getTax()->inUpperDecimal() * 100 - 100|round}</td>
-                <td style="text-align: right;">{$item->countTaxValue()|round}</td>
-                <td style="text-align: right;">{$item->countFinalValue()|round}</td>
-            </tr>
+                <tr>
+                    <td>{$item->getDescription()}</td>
+                    <td>{$item->getSize()}</td>
+                    <td style="text-align: right;">{$item->countUntaxedUnitValue()|round}</td>
+                    <td style="text-align: right;">{$item->getUnits()|round}</td>
+                    <td style="text-align: right;">{$item->getTax()->inUpperDecimal() * 100 - 100|round}</td>
+                    <td style="text-align: right;">{$item->countTaxValue()|round}</td>
+                    <td style="text-align: right;">{$item->countFinalValue()|round}</td>
+                </tr>
             {/foreach}
         </table>
     </div>
@@ -211,7 +214,7 @@
         {if !$signatureImgSrc}
             <p style="color: #1A5DAC; font-style: italic;">{$signatureText}</p>
         {else}
-            <img src="{$signatureImgSrc}" alt="Razitko s podpisem" />
+            <img src="{$signatureImgSrc}" alt="Razitko s podpisem"/>
         {/if}
     </div>
 </div>

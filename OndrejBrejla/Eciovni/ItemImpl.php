@@ -15,6 +15,9 @@ class ItemImpl implements Item
     /** @var string */
     private $description;
 
+    /** @var string */
+    private $size;
+
     /** @var Tax */
     private $tax;
 
@@ -31,13 +34,16 @@ class ItemImpl implements Item
      * Initializes the Item.
      *
      * @param string $description
+     * @param string $size
      * @param int $units
      * @param double $unitValue
      * @param Tax $tax
      * @param boolean $unitValueIsTaxed
      */
-    public function __construct($description, $units, $unitValue, Tax $tax, $unitValueIsTaxed = TRUE) {
+    public function __construct($description, $size, $units, $unitValue, Tax $tax, $unitValueIsTaxed = TRUE)
+    {
         $this->description = $description;
+        $this->size = $size;
         $this->units = $units;
         $this->unitValue = $unitValue;
         $this->tax = $tax;
@@ -49,8 +55,19 @@ class ItemImpl implements Item
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
+    }
+
+    /**
+     * Returns the size of the item.
+     *
+     * @return string
+     */
+    public function getSize()
+    {
+        return $this->size;
     }
 
     /**
@@ -58,7 +75,8 @@ class ItemImpl implements Item
      *
      * @return Tax
      */
-    public function getTax() {
+    public function getTax()
+    {
         return $this->tax;
     }
 
@@ -67,7 +85,8 @@ class ItemImpl implements Item
      *
      * @return double
      */
-    public function getUnitValue() {
+    public function getUnitValue()
+    {
         return $this->unitValue;
     }
 
@@ -76,7 +95,8 @@ class ItemImpl implements Item
      *
      * @return boolean
      */
-    public function isUnitValueTaxed() {
+    public function isUnitValueTaxed()
+    {
         return $this->unitValueIsTaxed;
     }
 
@@ -85,7 +105,8 @@ class ItemImpl implements Item
      *
      * @return int
      */
-    public function getUnits() {
+    public function getUnits()
+    {
         return $this->units;
     }
 
@@ -94,7 +115,8 @@ class ItemImpl implements Item
      *
      * @return double
      */
-    public function countTaxValue() {
+    public function countTaxValue()
+    {
         return ($this->countTaxedUnitValue() - $this->countUntaxedUnitValue()) * $this->getUnits();
     }
 
@@ -103,7 +125,8 @@ class ItemImpl implements Item
      *
      * @return double
      */
-    private function countTaxedUnitValue() {
+    private function countTaxedUnitValue()
+    {
         if ($this->isUnitValueTaxed()) {
             return $this->getUnitValue();
         } else {
@@ -116,7 +139,8 @@ class ItemImpl implements Item
      *
      * @return double
      */
-    public function countUntaxedUnitValue() {
+    public function countUntaxedUnitValue()
+    {
         if ($this->isUnitValueTaxed()) {
             return $this->getUnitValue() / $this->getTax()->inUpperDecimal();
         } else {
@@ -129,7 +153,8 @@ class ItemImpl implements Item
      *
      * @return double
      */
-    public function countFinalValue() {
+    public function countFinalValue()
+    {
         return $this->getUnits() * $this->countTaxedUnitValue();
     }
 
